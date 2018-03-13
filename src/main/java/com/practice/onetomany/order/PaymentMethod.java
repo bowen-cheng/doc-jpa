@@ -1,4 +1,4 @@
-package order;
+package com.practice.onetomany.order;
 
 public enum PaymentMethod {
   UNKNOWN,

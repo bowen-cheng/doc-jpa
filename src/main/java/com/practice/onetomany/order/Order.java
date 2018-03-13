@@ -1,6 +1,6 @@
-package order;
+package com.practice.onetomany.order;
 
-import customer.Customer;
+import com.practice.onetomany.customer.Customer;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;

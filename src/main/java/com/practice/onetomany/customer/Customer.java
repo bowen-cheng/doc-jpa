@@ -1,4 +1,4 @@
-package customer;
+package com.practice.onetomany.customer;
 
 import java.util.List;
 import javax.persistence.Column;
@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
-import order.Order;
+import com.practice.onetomany.order.Order;
 
 @Data
 @Entity
