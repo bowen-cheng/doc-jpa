@@ -21,8 +21,8 @@ public class Order {
 
   @Id
   @Column(name = "order_id")
-  @GeneratedValue(generator = "orders_order_id_seq", strategy = GenerationType.SEQUENCE)
-  @SequenceGenerator(allocationSize = 1, name = "orders_order_id_seq")
+  @GeneratedValue(generator = "id_seq", strategy = GenerationType.SEQUENCE)
+  @SequenceGenerator(allocationSize = 1, name = "id_seq", sequenceName = "orders_order_id_seq")
   private long id;
 
   private String itemName;
