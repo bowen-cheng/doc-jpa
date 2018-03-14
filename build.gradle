@@ -1,6 +1,6 @@
 buildscript {
     ext {
-        springBootVersion = '1.5.11.BUILD-SNAPSHOT'
+        springBootVersion = "1.5.11.BUILD-SNAPSHOT"
     }
     repositories {
         mavenCentral()
@@ -12,12 +12,12 @@ buildscript {
     }
 }
 
-apply plugin: 'java'
-apply plugin: 'idea'
-apply plugin: 'org.springframework.boot'
+apply plugin: "java"
+apply plugin: "idea"
+apply plugin: "org.springframework.boot"
 
-group = ''
-version = '0.0.1-SNAPSHOT'
+group = ""
+version = "0.0.1-SNAPSHOT"
 sourceCompatibility = 1.8
 
 repositories {
@@ -28,9 +28,11 @@ repositories {
 
 
 dependencies {
-    compile('org.springframework.boot:spring-boot-starter-data-jpa')
-    compile('org.flywaydb:flyway-core')
-    runtime('org.postgresql:postgresql')
-    compileOnly('org.projectlombok:lombok')
-    testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.boot:spring-boot-starter-data-rest")
+    compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework.boot:spring-boot-starter-data-jpa")
+    compile("org.flywaydb:flyway-core")
+    runtime("org.postgresql:postgresql")
+    compileOnly("org.projectlombok:lombok")
+    testCompile("org.springframework.boot:spring-boot-starter-test")
 }
