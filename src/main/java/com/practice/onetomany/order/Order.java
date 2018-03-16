@@ -1,5 +1,6 @@
 package com.practice.onetomany.order;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.practice.onetomany.customer.Customer;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -34,5 +35,6 @@ public class Order {
 
   @ManyToOne
   @JoinColumn(name = "customer_id")
+  @JsonIgnore
   private Customer customer;
 }
