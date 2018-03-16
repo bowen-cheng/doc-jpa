@@ -1,4 +1,4 @@
-package com.practice.onetomany.customer;
+package com.doc.onetomany.customer;
 
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;

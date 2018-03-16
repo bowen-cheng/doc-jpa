@@ -1,4 +1,4 @@
-package com.practice.onetomany.customer;
+package com.doc.onetomany.customer;
 
 import java.util.List;
 import org.springframework.data.jpa.repository.JpaRepository;
