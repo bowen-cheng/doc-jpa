@@ -32,7 +32,7 @@ public class CustomerController {
   @ApiOperation(value = "Get a customer by name", tags = TAG)
   @GetMapping("/{name}")
   public ResponseEntity<List<Customer>> getByName(
-      @ApiParam(name = "Customer name", required = true) @PathVariable(name = "name", value = "name") String name) {
+      @ApiParam(value = "Customer name", required = true) @PathVariable String name) {
     val customers = customerRepository.getByName(name);
     if (customers.isEmpty()) {
       return ResponseEntity.notFound().build();
@@ -49,10 +49,12 @@ public class CustomerController {
 
   @ApiOperation(value = "Delete an existing customer", tags = TAG)
   @DeleteMapping("/{name}")
-  public ResponseEntity<Customer> delete(@PathVariable String name) {
-    if (customerRepository.getByName(name) == null) {
+  public ResponseEntity<Customer> delete(
+      @ApiParam(value = "Customer name", required = true) @PathVariable String name) {
+    if (customerRepository.getByName(name).isEmpty()) {
       return ResponseEntity.notFound().build();
     } else {
+      customerRepository.deleteByName(name);
       return ResponseEntity.ok().build();
     }
   }
