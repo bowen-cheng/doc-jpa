@@ -1,5 +1,6 @@
 package com.doc.onetomany.customer;
 
+import com.doc.onetomany.order.Order;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Column;
@@ -12,7 +13,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
-import com.doc.onetomany.order.Order;
 
 @Data
 @Entity

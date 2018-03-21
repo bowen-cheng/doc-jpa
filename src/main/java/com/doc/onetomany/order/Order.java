@@ -1,7 +1,7 @@
 package com.doc.onetomany.order;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.doc.onetomany.customer.Customer;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
