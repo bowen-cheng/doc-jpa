@@ -1,5 +1,6 @@
 package com.doc.onetomany.customer;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -21,7 +22,12 @@ public class Customer {
   @Id
   @Column(name = "customer_id")
   @GeneratedValue(generator = "id_seq", strategy = GenerationType.SEQUENCE)
-  @SequenceGenerator(allocationSize = 1, name = "id_seq", sequenceName = "customers_customer_id_seq")
+  @SequenceGenerator(
+    allocationSize = 1,
+    name = "id_seq",
+    sequenceName = "customers_customer_id_seq"
+  )
+  @JsonIgnore
   private long id;
 
   private String name;
