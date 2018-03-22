@@ -3,9 +3,9 @@ package com.doc.onetomany.customer;
 import com.doc.onetomany.order.Order;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -13,11 +13,22 @@ import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.val;
 
 @Data
 @Entity
 @Table(name = "customers")
+@NoArgsConstructor
 public class Customer {
+
+  public Customer(String name, List<Order> orders) {
+    for (val order : orders) {
+      order.setCustomer(this);
+    }
+    setName(name);
+    setOrders(orders);
+  }
 
   @Id
   @Column(name = "customer_id")
@@ -32,6 +43,6 @@ public class Customer {
 
   private String name;
 
-  @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+  @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
   private List<Order> orders;
 }

@@ -6,6 +6,7 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -34,8 +35,8 @@ public class Order {
   @Enumerated(EnumType.STRING)
   private PaymentMethod paymentMethod = PaymentMethod.UNKNOWN;
 
-  @ManyToOne
-  @JoinColumn(name = "customer_id")
   @JsonIgnore
+  @ManyToOne(fetch = FetchType.LAZY)
+  @JoinColumn(name = "customer_id")
   private Customer customer;
 }

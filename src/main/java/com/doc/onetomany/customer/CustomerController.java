@@ -1,5 +1,6 @@
 package com.doc.onetomany.customer;
 
+import com.doc.onetomany.order.Order;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import java.util.List;
@@ -42,8 +43,10 @@ public class CustomerController {
   }
 
   @ApiOperation(value = "Create a new customer record", tags = TAG)
-  @PostMapping
-  public ResponseEntity<Customer> create(@RequestBody Customer customer) {
+  @PostMapping("/{name}")
+  public ResponseEntity<Customer> create(
+      @PathVariable String name, @RequestBody List<Order> orders) {
+    val customer = new Customer(name, orders);
     return new ResponseEntity<>(customerRepository.save(customer), HttpStatus.CREATED);
   }
 
