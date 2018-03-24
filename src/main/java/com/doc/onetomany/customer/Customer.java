@@ -14,6 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.NonNull;
 import lombok.val;
 
 @Data
@@ -22,10 +23,7 @@ import lombok.val;
 @NoArgsConstructor
 public class Customer {
 
-  public Customer(String name, List<Order> orders) {
-    for (val order : orders) {
-      order.setCustomer(this);
-    }
+  Customer(@NonNull String name, @NonNull List<Order> orders) {
     setName(name);
     setOrders(orders);
   }
@@ -41,8 +39,19 @@ public class Customer {
   @JsonIgnore
   private long id;
 
+  @NonNull
   private String name;
 
   @OneToMany(cascade = CascadeType.ALL, mappedBy = "customer")
   private List<Order> orders;
+
+  void setOrders(@NonNull List<Order> orders) {
+    if (orders.isEmpty()) {
+      return;
+    }
+    for (val order : orders) {
+      order.setCustomer(this);
+    }
+    this.orders = orders;
+  }
 }
