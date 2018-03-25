@@ -7,6 +7,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Repository
 public interface CustomerRepository extends JpaRepository<Customer, Long> {
+
+  @Transactional(readOnly = true)
   List<Customer> getByName(String name);
 
   @Transactional
