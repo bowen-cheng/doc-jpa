@@ -35,6 +35,17 @@ public class Order {
   @Enumerated(EnumType.STRING)
   private PaymentMethod paymentMethod = PaymentMethod.UNKNOWN;
 
+  /**
+   * By default, Hibernate uses a reference table for one to many mappings, @JoinColumn tells
+   * Hibernate to use a column instead.
+   *
+   * @JsonIgnore is needed here to prevent stack over flow exception during serialization (prevent
+   * cyclic serialization).
+   *
+   * @ManyToMany corresponds to the @OneToMany on the other side. This forms a bidirectional
+   * relationship. Bidirectional relationship works more efficient than single directional
+   * relationships. FetchType.LAZY tells Hibernate to lazily load the Orders.
+   */
   @JsonIgnore
   @ManyToOne(fetch = FetchType.LAZY)
   @JoinColumn(name = "customer_id")
